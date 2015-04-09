@@ -1,6 +1,6 @@
 {
   "name": "machinepack-select",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Select first, last or a slice of an array",
   "scripts": {
     "test": "mocha tests/test.js && node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
