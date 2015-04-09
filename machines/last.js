@@ -5,6 +5,8 @@ module.exports = {
   description: 'Get the last element',
   extendedDescription: '',
 
+  sync: true,
+
   inputs: {
     "collection": {
       "friendlyName": "collection",

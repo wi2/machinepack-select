@@ -4,6 +4,8 @@ module.exports = {
   description: 'Get the first elementement',
   extendedDescription: '',
 
+  sync: true,
+
   inputs: {
     "collection": {
       "friendlyName": "collection",

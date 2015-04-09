@@ -4,6 +4,8 @@ module.exports = {
   description: 'Get a slice of an array',
   extendedDescription: '',
 
+  sync: true,
+
   inputs: {
     "collection": {
       "friendlyName": "collection",
