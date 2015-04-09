@@ -1,0 +1,37 @@
+{
+  "name": "machinepack-select",
+  "version": "0.1.0",
+  "description": "Select first, last or a slice of an array",
+  "scripts": {
+    "test": "mocha tests/test.js && node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
+  },
+  "keywords": [
+    "Select",
+    "machines",
+    "machinepack"
+  ],
+  "author": "wi2",
+  "license": "MIT",
+  "dependencies": {
+    "machine": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4",
+    "should": "^5.2.0",
+    "test-machinepack-mocha": "^0.2.2"
+  },
+  "machinepack": {
+    "friendlyName": "Select",
+    "machineDir": "machines/",
+    "machines": [
+      "first",
+      "last",
+      "slice"
+    ],
+    "testsUrl": "https://travis-ci.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wi2/machinepack-select.git"
+  }
+}

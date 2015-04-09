@@ -1,0 +1,23 @@
+{
+  "machine": "last",
+  "expectations": [
+    {
+     "using": {
+        "collection": [1,2,3,4,5,6]
+      },
+       "outcome": "success"
+    },
+    {
+     "using": {
+        "collection": null
+      },
+       "outcome": "error"
+    },
+    {
+     "using": {
+        "collection": []
+      },
+       "outcome": "emptyError"
+    }
+  ]
+}
