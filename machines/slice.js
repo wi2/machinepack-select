@@ -61,18 +61,13 @@ module.exports = {
 
   fn: function (inputs,exits) {
     var result;
-    if (!Array.isArray(inputs.collection)) {
-      return exits.error();
-    } else if (!inputs.collection.length) {
-      return exits.emptyError();
-    }
+    if (!Array.isArray(inputs.collection)) { return exits.error(); }
+    else if (!inputs.collection.length) { return exits.emptyError(); }
     try {
-      var end;
-      if (inputs.include && inputs.end) {
-        var end = inputs.end + 1;
-      }
+      if (inputs.include && inputs.end) { var end = inputs.end + 1; }
       result = inputs.collection.slice(inputs.start, end||inputs.end||null);
     } catch (err) { return exits.error(err); }
+
     return exits.success(result);
   },
 

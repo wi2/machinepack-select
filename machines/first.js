@@ -21,6 +21,15 @@ module.exports = {
       "defaultsTo": false,
       "type": "boolean",
       "name": "shift"
+    },
+    "both": {
+      "friendlyName": "both",
+      "description": "A boolean to specify if we also return the array ",
+      "example": true,
+      "required": false,
+      "defaultsTo": false,
+      "type": "boolean",
+      "name": "both"
     }
   },
 
@@ -37,16 +46,13 @@ module.exports = {
       description: 'Done.',
       "getExample": function(inputs, env, input) {
         if (Array.isArray(inputs.collection) && inputs.collection.length) {
-          var first;
-          if (inputs.shift) {
-            first = inputs.collection.shift();
-          } else {
-            first = inputs.collection[0];
-          }
-          return {
-            first: first,
-            collection: inputs.collection
-          };
+          if (inputs.both)
+            return {
+              first: inputs.shift ? inputs.collection.shift() : inputs.collection[0],
+              collection: inputs.collection
+            };
+          else
+            return inputs.shift ? inputs.collection.shift() : inputs.collection[0]
         }
       },
       "isDefault": true,
@@ -58,21 +64,16 @@ module.exports = {
   },
 
   fn: function (inputs,exits) {
-    if (!Array.isArray(inputs.collection)) {
-      return exits.error();
-    } else if (!inputs.collection.length) {
-      return exits.emptyError();
-    }
-    var first;
-    if (inputs.shift) {
-      first = inputs.collection.shift();
-    } else {
-      first = inputs.collection[0];
-    }
-    return exits.success({
-      first: first,
-      collection: inputs.collection
-    });
+    if (!Array.isArray(inputs.collection)) { return exits.error(); }
+    else if (!inputs.collection.length) { return exits.emptyError(); }
+    var first = inputs.shift ? inputs.collection.shift() : inputs.collection[0];
+    if (inputs.both)
+      return exits.success({
+        first: first,
+        collection: inputs.collection
+      });
+    else
+      return exits.success(first);
   },
 
 };

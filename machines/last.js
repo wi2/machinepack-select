@@ -22,6 +22,15 @@ module.exports = {
       "defaultsTo": false,
       "type": "boolean",
       "name": "pop"
+    },
+    "both": {
+      "friendlyName": "both",
+      "description": "A boolean to specify if we also return the array ",
+      "example": true,
+      "required": false,
+      "defaultsTo": false,
+      "type": "boolean",
+      "name": "both"
     }
   },
 
@@ -38,16 +47,13 @@ module.exports = {
       description: 'Done.',
       "getExample": function(inputs, env, input) {
         if (Array.isArray(inputs.collection) && inputs.collection.length) {
-          var last;
-          if (inputs.pop) {
-            last = inputs.collection.pop();
-          } else {
-            last = inputs.collection[inputs.collection.length-1];
-          }
-          return {
-            last: last,
-            collection: inputs.collection
-          };
+          if (inputs.both)
+            return {
+              last: inputs.pop ? inputs.collection.pop() : inputs.collection[inputs.collection.length-1],
+              collection: inputs.collection
+            };
+          else
+            return inputs.pop ? inputs.collection.pop() : inputs.collection[inputs.collection.length-1];
         }
       },
       "isDefault": true,
@@ -59,21 +65,16 @@ module.exports = {
   },
 
   fn: function (inputs,exits) {
-    if (!Array.isArray(inputs.collection)) {
-      return exits.error();
-    } else if (!inputs.collection.length) {
-      return exits.emptyError();
-    }
-    var last;
-    if (inputs.pop) {
-      last = inputs.collection.pop();
-    } else {
-      last = inputs.collection[inputs.collection.length-1];
-    }
-    return exits.success({
-      last: last,
-      collection: inputs.collection
-    });
+    if (!Array.isArray(inputs.collection)) { return exits.error(); }
+    else if (!inputs.collection.length) { return exits.emptyError(); }
+    var last = inputs.pop ? inputs.collection.pop() : inputs.collection[inputs.collection.length-1];
+    if (inputs.both)
+      return exits.success({
+        last: last,
+        collection: inputs.collection
+      });
+    else
+      return exits.success(last);
   },
 
 };
