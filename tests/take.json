@@ -1,0 +1,25 @@
+{
+  "machine": "take",
+  "expectations": [
+    {
+      "using": {
+        "collection": [1, 2, 3, 4, 5, 6, 7, 8],
+        "num": 3
+      },
+      "outcome": "success"
+    },
+    {
+     "using": {
+        "collection": null
+      },
+       "outcome": "error"
+    },
+    {
+     "using": {
+        "collection": [],
+        "num": 1
+      },
+       "outcome": "emptyError"
+    }
+  ]
+}
