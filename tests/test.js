@@ -96,6 +96,16 @@ describe('Slice', function(){
     should(result[3]).be.equal(9)
     should(result.length).be.equal(4)
   });
+  it('get a slice without end', function(){
+    var result = select.slice({
+      collection: [5, 6, 7, 8, 9],
+      start: 1
+    }).execSync();
+    should(result[0]).be.equal(6)
+    should(result[2]).be.equal(8)
+    should(result[3]).be.equal(9)
+    should(result.length).be.equal(4)
+  });
 });
 
 describe('Take', function(){
