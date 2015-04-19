@@ -128,3 +128,34 @@ describe('Take', function(){
     should(result.length).be.equal(3)
   });
 });
+
+describe('Sample', function(){
+  it('get a random list with 3 items', function(){
+    var result = select.sample({
+      collection: [5, 6, 7, 8, 9, 10, 11, 12],
+      num: 3
+    }).execSync();
+    should(result.length).be.equal(3)
+  });
+  it('get a random list with 4 items', function(){
+    var result = select.sample({
+      collection: [5, 6, 7, 8, 9, 10, 11, 12],
+      num: 4
+    }).execSync();
+    should(result.length).be.equal(4)
+  });
+  it('get a random list with 1 item', function(){
+    var result = select.sample({
+      collection: [9, 10, 11, 12],
+      num: 1
+    }).execSync();
+    should(result.length).be.equal(1)
+  });
+  it('get a random list with 4 items', function(){
+    var result = select.sample({
+      collection: [9, 10, 11, 12],
+      num: 4
+    }).execSync();
+    should(result.length).be.equal(4)
+  });
+});

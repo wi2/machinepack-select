@@ -1,12 +1,19 @@
 {
   "name": "machinepack-select",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Select first, last or a slice of an array",
   "scripts": {
     "test": "mocha tests/test.js && node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
   },
   "keywords": [
     "Select",
+    "Array",
+    "first",
+    "last",
+    "slice",
+    "take",
+    "takeRight",
+    "sample",
     "machines",
     "machinepack"
   ],
@@ -28,7 +35,8 @@
       "last",
       "slice",
       "take",
-      "takeRight"
+      "takeRight",
+      "sample"
     ],
     "testsUrl": "https://travis-ci.org/"
   },
